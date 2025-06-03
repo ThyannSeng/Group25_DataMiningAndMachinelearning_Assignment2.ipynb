@@ -1,0 +1,1030 @@
+# Week 1: Introduction to Cloud Computing - Exam Cheatsheet v2
+
+## Key Definitions for Exam
+
+*   **Cloud Computing (General Definition):** The on-demand availability of computer system resources, especially data storage (cloud storage) and computing power, without direct active management by the user. Large clouds often have functions distributed over multiple locations (data centers). It relies on sharing of resources to achieve coherence and typically uses a "pay-as-you-go" model, which can help in reducing capital expenses but may also lead to unexpected operating expenses. (Source: Wikipedia, referenced in lecture)
+    *   *Microsoft Azure Definition:* "Simply put, cloud computing is the delivery of computing services - servers, storage, databases, networking, software, analytics and more - over the Internet ("the cloud"). Companies offering these computing services are called cloud providers and typically charge for cloud computing services based on usage, similar to how you're billed for gas or electricity at home."
+*   **Service (ITIL Definition, relevant to Cloud):** A means of delivering value to customers by facilitating outcomes customers want to achieve *without the ownership of specific costs and risks*.
+*   **Grid Computing vs. Cloud Computing:**
+    *   **Grid:** A cluster of computers (visible to users) that collaborate and run independently to solve a scientific problem.
+    *   **Cloud:** Treated as a virtual computer, with resources abstracted from the user.
+
+## Evolution of Computing Phases
+
+*   **Mainframe Computing:** Large, centralized computers.
+*   **Personal Computers (PCs):** Decentralized computing power.
+*   **Networked Computing (Client/Server):** (Early 1990s) PCs connected in networks, sharing resources.
+*   **Grid Computing:** (Around 2000s) Distributed, often heterogeneous, resources coordinated for large tasks.
+*   **Cloud Computing:** On-demand, scalable services over the internet, abstracting underlying infrastructure.
+*   **(Emerging):** Generative AI models / foundation reasoning models often rely heavily on cloud infrastructure.
+
+## Cloud Delivery Models (Service Models)
+
+*(Likely Fill-in-the-blank: Know full names and what each provides/manages)*
+
+1.  **Infrastructure as a Service (IaaS)**
+    *   **Provides:** Access to fundamental computing resources such as processing power (CPUs, VMs), storage, networks, and other foundational computing resources. Consumer can deploy and run arbitrary software, which can include operating systems and applications.
+    *   **Consumer Manages:** Operating systems, storage, deployed applications, and possibly limited control of select networking components (e.g., host firewalls).
+    *   **Provider Manages:** The underlying cloud infrastructure (Virtualization, Servers, Physical Storage, Networking).
+    *   **Examples:** Amazon EC2, Azure Virtual Machines, Google Compute Engine.
+
+2.  **Platform as a Service (PaaS)**
+    *   **Provides:** A platform allowing customers to develop, run, and manage applications without the complexity of building and maintaining the infrastructure typically associated with developing and launching an app. Consumers deploy their own applications created using programming languages and tools supported by the provider.
+    *   **Consumer Manages:** Deployed applications and possibly application hosting environment configurations.
+    *   **Provider Manages:** The underlying cloud infrastructure including network, servers, operating systems, storage, runtime, and middleware.
+    *   **Examples:** AWS Elastic Beanstalk, Heroku, Google App Engine, Microsoft Azure App Services.
+
+3.  **Software as a Service (SaaS)**
+    *   **Provides:** Provider's applications running on a cloud infrastructure. These applications are accessible from various client devices through either a thin client interface, such as a web browser (e.g., web-based email), or a program interface.
+    *   **Consumer Manages:** Does not manage or control the underlying cloud infrastructure including network, servers, operating systems, storage, or even individual application capabilities, with the possible exception of limited user-specific application configuration settings.
+    *   **Provider Manages:** Applications, Data, Runtime, Middleware, Operating System, Virtualization, Servers, Storage, Networking.
+    *   **Examples:** Gmail, Salesforce, Microsoft 365, Dropbox.
+
+## Cloud Deployment Models
+
+*   **Public Cloud:**
+    *   Provisioned for open use by the general public.
+    *   Owned, managed, and operated by a business, academic, or government organization (or some combination).
+    *   Exists on the premises of the cloud provider.
+*   **Private Cloud:**
+    *   Provisioned for exclusive use by a single organization comprising multiple consumers (e.g., business units).
+    *   May be owned, managed, and operated by the organization, a third party, or some combination, and it may exist on or off premises.
+*   **Community Cloud:**
+    *   Provisioned for exclusive use by a specific community of consumers from organizations that have shared concerns (e.g., mission, security requirements, policy, compliance considerations).
+    *   May be owned, managed, and operated by one or more of the organizations in the community, a third party, or some combination, and it may exist on or off premises. Also referred to as **Federated Cloud**.
+*   **Hybrid Cloud:**
+    *   A composition of two or more distinct cloud infrastructures (private, community, or public) that remain unique entities but are bound together by standardized or proprietary technology that enables data and application portability (e.g., cloud bursting for load balancing between clouds).
+
+## Essential Cloud Computing Attributes & Characteristics
+
+*   **NIST Five Essential Characteristics:**
+    *   **On-demand self-service:** Consumers can unilaterally provision computing capabilities (e.g., server time, network storage) as needed automatically, without requiring human interaction with each service provider.
+    *   **Broad network access:** Capabilities are available over the network and accessed through standard mechanisms that promote use by heterogeneous thin or thick client platforms (e.g., mobile phones, tablets, laptops, workstations).
+    *   **Resource pooling:** The provider's computing resources are pooled to serve multiple consumers using a multi-tenant model, with different physical and virtual resources dynamically assigned and reassigned according to consumer demand. Location independence means users generally have no control or knowledge over the exact location of provided resources but may be able to specify location at a higher level of abstraction (e.g., country, state, or datacenter).
+    *   **Rapid elasticity/scalability:** Capabilities can be elastically provisioned and released (in some cases automatically) to scale rapidly outward and inward commensurate with demand. To the consumer, the capabilities available for provisioning often appear to be unlimited and can be appropriated in any quantity at any time. "Elastic computing" refers to this ability.
+    *   **Measured service:** Cloud systems automatically control and optimize resource use by leveraging a metering capability at some level of abstraction appropriate to the type of service (e.g., storage, processing, bandwidth, active user accounts). Resource usage can be monitored, controlled, and reported, providing transparency for both the provider and consumer (pay-per-use or pay-as-you-go).
+*   **Other Key Attributes & Benefits from Lecture:**
+    *   **Massive Infrastructure:** Cloud providers operate large-scale data centers. (e.g., AWS regions and availability zones - an AZ is one or more data centers, isolated and physically separate, connected via low-latency networks).
+    *   **Utility Computing:** Computing resources are offered as a metered service, like electricity or water.
+    *   **Accessible via the Internet:** Services are delivered over the internet.
+    *   **Resiliency and Availability:** Achieved through redundancy, often across multiple data centers (Availability Zones within Regions). Data storage strategies aim to increase reliability and security.
+    *   **Shared Resources & Management:**
+        *   Resources (CPU, storage, bandwidth) are shared; multiplexing (e.g., Time Division Multiplexing - TDM, Frequency Division Multiplexing - FDM) leads to a higher resource utilization as peak demands are not synchronized.
+        *   Maintenance and security are typically operated by service providers, who can achieve efficiencies through specialization and centralization.
+    *   **Cost Reduction:** Eliminates large upfront capital expenditure for private infrastructure; pay-as-you-go model.
+    *   **User Convenience:** Virtualization allows users to operate in familiar environments.
+    *   **Data Sharing & Collaboration:** Facilitates collaborative activities as many applications require analysis of shared datasets by globally distributed groups.
+
+## Introduction to Web Services (Relevant for Cloud Concepts)
+
+*   **Web Service (W3C Definition):** A software system designed to support interoperable machine-to-machine interaction over a network. It has an interface described in a machine-processable format (specifically WSDL for SOAP services). Other systems interact with the Web service in a manner prescribed by its description using SOAP messages, typically conveyed using HTTP with an XML serialization in conjunction with other Web-related standards.
+    *   Can perform encapsulated business functions: self-contained tasks (e.g., funds withdrawal), full business processes (e.g., office supply purchasing), applications (e.g., insurance application), or access to resources (e.g., patient medical records database).
+    *   **Service Interface:** Defines functionality visible to the external world (operations, parameters, data-typing, access protocols).
+    *   **Service Implementation:** Realizes the interface; details are hidden. Can be implemented in any language.
+
+*   **Two Major Classes of Web Services:**
+    1.  **SOAP (Simple Object Access Protocol) based Web Services (XML SOAP Web Services):**
+        *   Relies heavily on XML and a standardized protocol stack (SOAP, WSDL, UDDI - though UDDI is less common now).
+        *   Messages are XML formatted.
+        *   Often seen as more rigid, but with built-in standards for security (WS-Security), transactions, etc.
+    2.  **REST (Representational State Transfer) based Web Services (RESTful APIs / REST-compliant Web services):**
+        *   An architectural style, not a strict protocol.
+        *   Primary purpose is to manipulate representations of Web resources using a uniform set of stateless operations.
+        *   Uses standard HTTP methods (GET, POST, PUT, DELETE, PATCH, etc.).
+        *   Resources are identified by URIs.
+        *   Can use various data formats for representations, commonly JSON, but also XML, HTML, plain text.
+        *   Generally simpler and more lightweight than SOAP.
+
+*   **Key Points for Multiple Choice (Web Services & Data Formats):**
+    *   RESTful APIs **do not require** the use of XML; JSON is very common.
+    *   JSON data **does not need** to be converted to XML to be used as a return for a web service (especially RESTful ones).
+    *   RESTful Web services **can and do** use the HTTP POST method (typically for creating resources or sending data that doesn't fit in a URL). Other methods like GET (retrieve), PUT (update/replace), DELETE (remove) are also standard.
+    *   SOAP primarily uses XML.
+
+## Enabling Technologies (Brief Overview)
+
+*   **Virtualization:** (Covered in-depth in Week 6) Creates a virtual version of a resource (e.g., server, storage, network, OS). Fundamental to resource pooling, scalability, and IaaS.
+    *   **Hypervisor (VMM):** Software allowing multiple VMs on a single physical server.
+        *   *Type 1 (Bare-metal):* Runs directly on hardware.
+        *   *Type 2 (Hosted):* Runs on a host OS.
+*   **Service-Oriented Architecture (SOA):** A logical way of designing a software system to provide services to either end-user applications or to other services distributed in a network, via published and discoverable interfaces. Web services are a common way to implement SOA.
+    *   **Key Roles:** Service Provider, Service Client, Service Registry (Publish, Find, Bind operations).
+*   **Web 2.0 and Mashups:**
+    *   **Web 2.0:** Focus on user-generated content, interactivity, and collaboration (e.g., social media, blogs, wikis).
+    *   **Mashup:** A web application that combines data or functionality from multiple external sources (often using APIs/Web services) to create a new, integrated service.
+
+## Cloud Computing Challenges
+
+*   **Availability & Reliability:** Service outages can occur (e.g., Amazon 2012 lightning incident).
+*   **Data Confidentiality & Auditability:** Ensuring data privacy and meeting compliance requirements.
+*   **Vendor Lock-in (Data Portability):** Difficulty migrating services and data between cloud providers due to diversity of services, data organization, and interfaces.
+*   **Security & Data Privacy:** Protecting against attacks (e.g., Denial of Service - DoS like Google 2009 incident), unauthorized access, especially for sensitive applications (e.g., healthcare).
+*   **Performance Unpredictability:** Shared resources can lead to variable performance.
+*   **Data Transfer Bottlenecks:** Moving large datasets into or out of the cloud can be slow and costly.
+
+## Parallel & Distributed Systems (Brief Overview)
+
+*   **Parallel Computing:**
+    *   **Definition:** A form of computation in which many calculations are carried out simultaneously, operating on the principle that large problems can often be divided into smaller ones, which are then solved concurrently.
+    *   **Purpose:** Solve problems demanding resources not available on a single system or reduce computation time.
+    *   **Speedup (S):** `S(N) = T(1) / T(N)`, where T(1) is sequential time, T(N) is parallel time with N processors.
+    *   **Amdahl's Law:** Theoretical limit on speedup. If `a` is the fraction of non-parallelizable code, then `S <= 1/a`.
+*   **Distributed Systems:**
+    *   **Definition:** A collection of independent computers connected through a network and distribution software (middleware) which enables them to coordinate their activities and share resources for a common goal.
+    *   **Inter-process Communication (IPC):** Key methods include Remote Procedure Call (RPC) and Message Passing. (Covered more in Week 2/3).
+ 
+
+# Week 2: Distributed and Cloud Computing Infrastructure - Exam Cheatsheet v2
+
+## Distributed Systems Fundamentals
+
+*   **Definition:** A collection of heterogeneous networked computers that communicate and coordinate their actions by exchanging messages. Distribution is transparent to the user, so the system appears as a single integrated facility.
+*   **Process:** A program in execution; an active entity needing resources (CPU, memory, I/O, files, initialization data).
+    *   **OS Process Management Responsibilities:** Creating/deleting processes, suspending/resuming, process synchronization (e.g., solving "5 philosophers problem"), process communication, deadlock handling.
+*   **Key Characteristic:** Processes often span multiple processors, necessitating Inter-Process Communication (IPC).
+
+## Middleware
+
+*   **Definition:** A software layer providing a functional set of interfaces that sits between applications and the underlying operating systems and network protocols.
+*   **Purpose:**
+    *   **Transparency:** Transparently locate applications across the network.
+    *   **Abstraction & Shielding:** Shield software developers from low-level, tedious, and error-prone platform details (e.g., different OS APIs, network programming). Provide consistent higher-level abstractions closer to application requirements.
+    *   **Interoperability:** Enable communication between heterogeneous systems.
+    *   **Reuse:** Leverage and reuse previous developments.
+    *   **Common Services (Quality of Service - QoS):** Provide services like reliability, availability, authentication, security, transaction management.
+*   **Typical Layers (Conceptual):**
+    1.  Applications & services
+    2.  Middleware layers (e.g., Non-message based like RPC, Message-based like MOM)
+    3.  Inter-process communication & Serialization Infrastructure
+    4.  Internet-transport level protocols (TCP/IP, HTTP)
+*   **Relation to Cloud Service Models:**
+    *   **IaaS:** Consumer typically deploys and manages their own middleware on top of the provided infrastructure.
+    *   **PaaS:** Provider manages and offers middleware components (e.g., messaging services, database services, runtimes) as part of the platform.
+    *   **SaaS:** Provider manages all underlying infrastructure, including any middleware used by the SaaS application.
+*   **Serverless Computing (e.g., AWS Fargate, Azure Functions):** Further abstracts middleware and infrastructure details from developers.
+
+## Client-Server Model
+
+*   **Architecture:** Divides tasks between:
+    *   **Clients:** Service consumers; typically handle user interface and initiate requests.
+    *   **Servers:** Service providers; process requests, manage data, and execute application logic.
+*   **Interaction:** Client sends a request, server processes it and returns a response.
+*   **Tiers:**
+    *   **Two-tier:** Client communicates directly with the server.
+    *   **Three-tier:** Adds a middle tier (e.g., application server) between client and data server for logic processing.
+    *   **N-tier:** Extends to multiple specialized server tiers.
+
+## Inter-Process Communication (IPC)
+
+*   **Purpose:** Enables processes (potentially on different machines) to exchange data and coordinate actions.
+*   **Key Mechanisms:**
+
+    1.  **Ordinary Pipes:**
+        *   Allow communication in a standard producer-consumer style, typically between related processes (e.g., parent-child).
+        *   Unidirectional: Producer writes to one end, consumer reads from the other.
+    2.  **Sockets:**
+        *   An endpoint for communication between two processes across a network, identified by an IP address and a port number.
+        *   **TCP (Transmission Control Protocol):** Connection-oriented (requires handshake to establish connection), reliable (guarantees delivery, order, and error-checking), stream-based.
+        *   **UDP (User Datagram Protocol):** Connectionless (no handshake), unreliable (no guarantees on delivery, order, or error-checking beyond basic checksum), datagram-based (sends discrete packets). Faster but less reliable than TCP.
+    3.  **Remote Procedure Call (RPC):**
+        *   A synchronous form of middleware that allows a program on one computer to execute a procedure (function/subroutine) in another address space (often on another computer) as if it were a local call.
+        *   **Serialization/Deserialization (Marshalling/Unmarshalling):**
+            *   **Marshalling (Client-side):** Packing the procedure parameters (and procedure identifier) into a message format suitable for network transmission (e.g., converting data structures into a byte stream).
+            *   **Unmarshalling (Server-side):** Reconstructing the parameters from the message on the server.
+            *   The process is reversed for the return values.
+        *   **Stub Code:** Generated code on client and server sides that handles the marshalling, unmarshalling, and network communication, making the remote call appear local to the application code.
+        *   **Coupling:** Leads to tight coupling of interfaces and applications, as the client needs to know the details of the server's interface.
+    4.  **Message Passing (Message Oriented Middleware - MOM):**
+        *   An asynchronous communication infrastructure involving the passing of data between applications using a common communication channel that carries self-contained messages.
+        *   **Asynchronous:** Sender sends a message ("fire-and-forget") and can continue its own processing without waiting for an immediate response. The receiver processes the message when ready.
+        *   **Message Queues:** A core component. Messages are placed on a queue by a sending application and retrieved by the receiving application as needed. The queue acts as a temporary buffer, decoupling the sender and receiver. (e.g., Amazon SQS).
+        *   **Message Broker (Integration Broker):** Often part of MOM systems and EAI. An application-to-application middleware service capable of one-to-many, many-to-one & many-to-many message distribution.
+            *   Manages message routing, transformation, and distribution.
+            *   Records and manages contracts between publishers and subscribers.
+            *   Provides functions like message transformation, business rules processing, routing services, naming services, adapter services (to connect to various systems), repository services, events & alerts.
+        *   **Advantages:** Loose coupling, scalability, reliability (messages persist), flexibility.
+        *   **Examples:** Amazon SQS, RabbitMQ, Apache Kafka.
+
+## Synchronous vs. Asynchronous Middleware
+
+*   **Synchronous Middleware (e.g., RPC):**
+    *   **Interaction:** Client sends a request and *blocks (waits)* until the server responds.
+    *   **Coupling:** Tightly coupled (client and server must be available and interact in real-time).
+    *   **Use Cases:** Suitable for interactions where an immediate response is required and the client cannot proceed without it.
+
+*   **Asynchronous Middleware (e.g., Message Oriented Middleware - MOM):**
+    *   **Interaction:** Client sends a message and *does not block (continues processing)*. The response, if any, may arrive later. This is often called "send and forget."
+    *   **Coupling:** Loosely coupled. Participants need only ensure they can send/receive messages to/from the messaging system, not know intimate details of other applications.
+    *   **Use Cases:** Suitable for long-running tasks, batch processing, event-driven architectures, when immediate response isn't critical, improving system responsiveness and resilience.
+    *   **Publish/Subscribe Messaging:** A common pattern in MOM.
+        *   Applications (publishers) produce information (messages) and publish it to a specific "topic" or channel.
+        *   Other applications (subscribers) that need this type of information subscribe to that topic.
+        *   The messaging system delivers messages from publishers to all interested subscribers.
+        *   Enables many-to-many communication.
+    *   **Event-Driven Processing:** Asynchrony, heterogeneity, and loose coupling in modern applications often require event notification mechanisms, typically realized via publish/subscribe. Objects of interest (producers) generate notifications, and interested parties (consumers) receive them.
+
+## Enterprise Application Integration (EAI)
+
+*   **Goal:** To eliminate islands of data and automation by integrating diverse custom, legacy, and packaged applications (e.g., ERP, CRM) within an enterprise into a cohesive corporate framework.
+*   **Middleware Role:** EAI uses a robust communications backbone, often with MOM and integration broker technology, to facilitate message exchange, transformation, routing, and business process workflow between these disparate systems. Adapters are often used to connect to specific Enterprise Information Systems.
+
+## Internet and WWW Fundamentals (Recap/Reinforcement)
+
+*   **Internet:** A global system of interconnected computer networks using the TCP/IP protocol suite.
+*   **World Wide Web (WWW):** An information system where documents and other web resources are identified by URLs, interlinked by hypertext, and accessible via the Internet using HTTP. (Invented by Sir Tim Berners-Lee).
+*   **Key Components/Protocols:**
+    *   **HTTP (Hypertext Transfer Protocol):** Protocol for transmitting hypermedia documents (e.g., HTML).
+        *   **GET Request:** Retrieves data from a server (parameters often in URL). Safe and Idempotent.
+        *   **POST Request:** Sends data to the server (data in request body, e.g., form submissions). Not necessarily safe or idempotent. Used for creating resources or when data is too large/sensitive for URL.
+        *   **HTTP Request/Response Headers:** Contain metadata about the request/response (e.g., User-Agent, Content-Type, Host).
+        *   **Status Codes:** Indicate the result of the request (e.g., 200 OK, 404 Not Found, 500 Internal Server Error).
+    *   **URL (Uniform Resource Locator):** Address of a resource on the web (e.g., `http://www.example.com/path/to/file`).
+    *   **HTML (HyperText Markup Language):** Standard markup language for creating web pages.
+    *   **DNS (Domain Name System):** Translates human-readable domain names (e.g., `www.aut.ac.nz`) to numerical IP addresses (e.g., `156.62.238.90`) that computers use to identify each other on the network.
+    *   **TCP/IP:** Foundation protocols for Internet communication. TCP provides reliable end-to-end message transfer; IP handles packet delivery.
+    *   **MIME (Multipurpose Internet Mail Extensions) Type:** Standard for indicating the nature and format of a document (e.g., `text/html`, `application/json`, `image/jpeg`). Sent in HTTP headers (Content-Type).
+
+*(Note: While specific Amazon services like ECS, SQS are mentioned in the original cheatsheet, the exam guidelines focus more on the underlying concepts. Understanding SQS as an example of MOM is beneficial.)*
+
+## Overview of Cloud Computing Infrastructure Components (e.g., Amazon AWS)
+
+While the exam focuses on concepts, understanding how these map to real-world services is useful:
+*   **Compute:**
+    *   **Amazon EC2 (Elastic Compute Cloud):** Provides resizable compute capacity (virtual machines).
+    *   **AWS Lambda:** Serverless compute service (run code without provisioning servers).
+*   **Messaging & Queuing:**
+    *   **Amazon SQS (Simple Queue Service):** Managed message queuing service (an example of MOM).
+*   **Networking:**
+    *   **Amazon VPC (Virtual Private Cloud):** Logically isolated section of the AWS Cloud.
+*   **API Management:**
+    *   **AWS API Gateway:** Create, publish, maintain, monitor, and secure APIs.
+*   **Monitoring & Management:**
+    *   **Amazon CloudWatch:** Monitors AWS resources and applications.
+    *   **Amazon EC2 Auto Scaling:** Automatically adjusts EC2 capacity.
+    *   **AWS Management Console:** Web interface for managing AWS services.
+*   **Data Streaming:**
+    *   **AWS Kinesis:** Service for real-time data streaming.
+ 
+
+
+# Week 3: Web Service Protocols & RESTful Services - Exam Cheatsheet v2
+
+## Data Description Languages for Web Services
+
+*   **XML (eXtensible Markup Language):**
+    *   **Definition:** A markup language for encoding documents in a format that is both human-readable and machine-readable. It's a meta-language, allowing users to define their own tags.
+    *   **Purpose:** Primarily to structure, store, and transport data.
+    *   **Structure:** Uses tags (e.g., `<element>content</element>`) and attributes (e.g., `<element attribute="value">`). Documents must have one root element. Can have an optional prolog (XML declaration `<?xml version="1.0"?>`, DTD/Schema reference).
+    *   **Well-formed:** Must follow XML syntax rules (e.g., proper nesting, all tags closed, case-sensitive tags). Parsers check this.
+    *   **Valid (Optional):** Conforms to a DTD (Document Type Definition) or an XML Schema (XSD). Validating parsers check this.
+        *   **DTD:** Defines the legal building blocks of an XML document (elements, attributes, order, nesting). Older than XSD.
+            *   `<!ELEMENT name (content-model)>`: Defines an element and its allowed content.
+                *   `#PCDATA`: Parsed Character Data (text).
+                *   Child elements: e.g., `(to,from,heading,body)` for sequence.
+                *   `EMPTY`: For empty elements like `<br />`.
+                *   `ANY`: Any content.
+                *   Mixed content: e.g., `(#PCDATA|child_element)*`.
+            *   Occurrence indicators: `+` (one or more), `*` (zero or more), `?` (zero or one), no indicator (exactly one).
+        *   **XML Schema (XSD):** More powerful, flexible, and written in XML. Supports rich data types, namespaces, and more complex structural constraints.
+    *   **Key Syntax:**
+        *   Tags are case-sensitive.
+        *   Empty elements: `<empty_tag />` or `<empty_tag></empty_tag>`.
+        *   Comments: `<!-- This is a comment -->`.
+        *   Character Data (PCDATA): Text content. Special characters like `<`, `>`, `&` must be escaped (e.g., `<`, `>`, `&`).
+        *   CDATA Sections: `<![CDATA[ text with < & > ]]>` to treat content as raw character data, not markup.
+
+*   **JSON (JavaScript Object Notation):**
+    *   **Definition:** A lightweight data-interchange format. Easy for humans to read/write; easy for machines to parse/generate. Based on a subset of JavaScript language.
+    *   **Purpose:** Primarily for transmitting data between a server and web application, as an alternative to XML.
+    *   **Structure:**
+        *   **Objects:** Unordered collections of key/value pairs (e.g., `{"name": "Alice", "age": 30}`). Enclosed in `{}`. Keys are strings (in double quotes).
+        *   **Arrays:** Ordered lists of values (e.g., `[1, "apple", true]`). Enclosed in `[]`.
+        *   **Values:** Can be strings (in double quotes), numbers, booleans (`true`/`false`), arrays, objects, or `null`.
+    *   **Advantages over XML (for many web API use cases):** More concise (less verbose), generally faster/easier to parse, naturally aligns with JavaScript.
+    *   **JSON Schema:** A vocabulary (itself a JSON document) that allows you to annotate and validate JSON documents. Defines structure, data types, constraints (e.g., `type`, `properties`, `required`, `items`, `enum`, `minLength`).
+
+## Web Service Architectures
+
+### 1. SOAP (Simple Object Access Protocol) - Traditional Web Services
+
+*   **Definition:** A protocol specification for exchanging structured information in the implementation of Web Services in computer networks. It relies on XML for its message format.
+*   **Key Characteristics:**
+    *   **XML-based:** All messages are XML.
+    *   **Protocol, not an architecture:** Defines a strict set of rules.
+    *   **Transport:** Typically uses HTTP/HTTPS, but can use other protocols (e.g., SMTP).
+*   **SOAP Message Structure:**
+    *   **Envelope:** The root element that identifies the XML document as a SOAP message.
+    *   **Header (Optional):** Contains application-specific information (metadata) like authentication, routing, transaction management. If present, must be the first child of the Envelope.
+    *   **Body:** Contains the actual message payload (call and response information).
+    *   **Fault (Optional, within Body):** Contains error messages if a fault occurs during processing.
+*   **WSDL (Web Services Description Language):**
+    *   An XML-based language used to describe the capabilities of a SOAP-based web service.
+    *   Defines:
+        *   *What* the service does (the operations it provides).
+        *   *How* to communicate with it (details of the data formats and protocols necessary to access the service's operations).
+        *   *Where* it resides (details of the protocol-specific address, e.g., a URL).
+    *   **WSDL Document Structure (Key Elements):**
+        *   **Abstract Part (Service Interface Definition):**
+            *   `<types>`: Defines data types used by the messages (often using XML Schema - XSD).
+            *   `<message>`: Describes the data being communicated (input/output parameters of an operation, consisting of one or more "parts").
+            *   `<portType>` (or `<interface>` in WSDL 2.0): A set of abstract operations. Each operation specifies input/output messages.
+                *   **Operation Types:**
+                    *   *One-way:* Service receives a message (endpoint receives).
+                    *   *Request-response:* Service receives a message, and sends a correlated message (endpoint receives, then sends).
+                    *   *Solicit-response:* Service sends a message, and receives a correlated message (endpoint sends, then receives).
+                    *   *Notification:* Service sends a message (endpoint sends).
+        *   **Concrete Part (Service Implementation Definition):**
+            *   `<binding>`: Specifies concrete protocol and data format specifications for a particular `portType` (e.g., SOAP over HTTP, RPC or Document style).
+            *   `<service>`: A collection of related endpoints (`port` elements).
+            *   `<port>` (or `<endpoint>` in WSDL 2.0): A single endpoint defined as a combination of a `binding` and a network address (URL) where the service can be accessed.
+
+### 2. REST (Representational State Transfer) - RESTful Web Services / APIs
+
+*   **Definition:** An architectural style for designing networked applications. It is NOT a protocol or standard like SOAP.
+*   **Key Principles/Constraints:**
+    1.  **Client-Server Architecture:** Separation of concerns between the client (initiates requests) and the server (processes requests and sends responses).
+    2.  **Stateless:** Each request from a client to a server must contain all the information needed to understand and process the request. The server does not store any client context (session state) between requests.
+    3.  **Cacheable:** Responses from the server should explicitly define whether they are cacheable or not, to improve performance and scalability.
+    4.  **Layered System:** A client cannot ordinarily tell whether it is connected directly to the end server or to an intermediary along the way.
+    5.  **Uniform Interface (Crucial for loose coupling):**
+        *   **Identification of Resources:** Resources (e.g., a user, a product) are identified by URIs (Uniform Resource Identifiers, e.g., `/users/123`).
+
+        *   **Manipulation of Resources Through Representations:** Clients interact with resources by exchanging representations of these resources (e.g., a JSON or XML document representing a user). The client holds a representation of a resource and can request changes to the resource on the server.
+        *   **Self-Descriptive Messages:** Each message (request/response) includes enough information to describe how to process it (e.g., using HTTP methods, status codes, media types like `application/json`).
+        *   **Hypermedia as the Engine of Application State (HATEOAS):** Application state is driven by client navigation of hypermedia links provided in server responses. Clients discover possible actions by inspecting these links.
+*   **HTTP Methods in REST:** Standard HTTP verbs are used to perform operations on resources:
+    *   **GET:** Retrieve a representation of a resource (e.g., `GET /users/123`). (Safe, Idempotent)
+    *   **POST:** Create a new resource, or submit data to be processed by a resource (e.g., `POST /users`). (Not Safe, Not Idempotent)
+    *   **PUT:** Update/replace an existing resource entirely with the provided representation (e.g., `PUT /users/123`). (Not Safe, Idempotent)
+    *   **PATCH:** Partially update an existing resource (e.g., `PATCH /users/123`). (Not Safe, Not necessarily Idempotent)
+    *   **DELETE:** Delete a resource (e.g., `DELETE /users/123`). (Not Safe, Idempotent)
+        *   *Safe Method:* Does not alter server state (e.g., GET, HEAD, OPTIONS).
+        *   *Idempotent Method:* Multiple identical requests have the same effect as a single request (e.g., GET, PUT, DELETE).
+*   **Data Formats:** RESTful APIs can use various data formats, with **JSON being the most common**. XML, HTML, plain text are also possible.
+*   **Development:** Often implemented using web frameworks (e.g., Slim for PHP, Flask/Django for Python, Express.js for Node.js, Spring for Java) that simplify routing and request/response handling. APIs are consumed using HTTP clients (e.g., cURL, browser's Fetch API).
+
+## Key Differences & Exam Points (SOAP vs. REST)
+
+*   **Protocol vs. Style:** SOAP is a protocol with a strict specification; REST is an architectural style based on a set of constraints.
+*   **Data Format:**
+    *   SOAP **requires XML** for messages.
+    *   RESTful APIs **can use various formats**, most commonly JSON. They **do not require XML**.
+*   **Data Conversion:** JSON data **does not need to be converted to XML** to be used as a return for a web service, especially in RESTful APIs that natively support JSON.
+*   **HTTP Method Usage:**
+    *   SOAP typically uses HTTP POST for all operations (embedding the SOAP message in the POST body).
+    *   RESTful APIs **use the full range of HTTP methods** (GET, POST, PUT, DELETE, etc.) semantically.
+*   **Complexity & Overhead:** REST is generally considered simpler, more flexible, and has less overhead than SOAP.
+*   **Standards:** SOAP has many associated WS-* standards (e.g., WS-Security, WS-Addressing). REST relies more on standard HTTP, URI, and media type features.
+
+**Addressing Sample Exam Multiple Choice Questions:**
+
+*   *"JSON data must be converted to XML before it can be used as the return of a web service."* -> **False**. RESTful services commonly return JSON directly.
+*   *"RESTful APIs require the use of XML data."* -> **False**. JSON is more common, though XML can be used.
+*   *"RESTful Web services cannot use HTTP POST method"* -> **False**. POST is commonly used, typically for creating resources or submitting data that doesn't fit well in a URL.
+
+## Same-Origin Policy (SOP) & Cross-Origin Resource Sharing (CORS)
+
+*   **Same-Origin Policy (SOP):** A web browser security mechanism that restricts how a document or script loaded from one **origin** can interact with a resource from another origin.
+    *   **Origin:** Defined by the combination of **protocol** (http, https), **hostname** (domain), and **port**. If all three match, origins are the same.
+    *   **Purpose:** Prevents malicious scripts on one page from obtaining sensitive data on another web page via its Document Object Model (DOM) or by making arbitrary requests.
+*   **Implications for Web Services:** JavaScript (e.g., using `XMLHttpRequest` or `Fetch API`) running in a browser cannot directly call a web service on a different origin unless cross-origin mechanisms are enabled by the server.
+*   **Solutions for Cross-Origin Requests:**
+    *   **CORS (Cross-Origin Resource Sharing):** A W3C standard that allows servers to specify which origins (domains) are permitted to access their assets/APIs. This is done using HTTP headers sent by the server, such as:
+        *   `Access-Control-Allow-Origin: *` (allows any origin - less secure)
+        *   `Access-Control-Allow-Origin: https://specific.example.com` (allows a specific origin)
+        *   Other headers control allowed methods, headers, credentials, etc.
+    *   **JSONP (JSON with Padding):** (Older technique, security concerns, limited to GET requests) Uses `<script>` tags to fetch data, as scripts are not subject to SOP for execution. The server wraps JSON data in a function call.
+    *   **Server-Side Proxy:** The client-side application makes a request to its own origin server. This server then makes the actual cross-origin request to the target web service on behalf of the client and relays the response back.
+
+ 
+
+# Week 5: Complex Networks - Exam Cheatsheet v2
+
+## Fundamental Network Concepts
+
+*   **Nodes / Vertices (N):** The entities in a network.
+*   **Links / Edges (L):** The interactions or connections between nodes.
+    *   In an undirected network, an edge (a,b) is the same as (b,a).
+    *   The number of links (L) is the count of unique edges.
+
+## Key Topological Properties for Exam
+
+### 1. Node Degree (k)
+
+*   **Definition:** The number of links connected to a node.
+*   **Undirected Networks:** The degree of a node `k_i` is simply the number of edges connected to node `i`.
+*   **Directed Networks (for awareness, exam example is undirected):**
+    *   **In-degree (k_in):** Number of links pointing *to* the node.
+    *   **Out-degree (k_out):** Number of links originating *from* the node.
+    *   **Total Degree (k):** `k_in + k_out`.
+    *   **Source Node:** A node with `k_in = 0`.
+    *   **Sink Node:** A node with `k_out = 0`.
+*   **Degree Distribution P(k):** The probability that a randomly chosen node has degree k. Calculated as `P(k) = N_k / N`, where `N_k` is the number of nodes with degree k, and `N` is the total number of nodes.
+*   **Centrality Measures (briefly):**
+    *   **Degree Centrality:** Importance based on the number of links.
+    *   **Eigenvector Centrality:** Importance is proportional to the sum of the importance of its neighbors (underlies Google PageRank).
+
+### 2. Average Degree (<k>)
+
+*   **Definition:** The average number of links per node in the network.
+*   **Calculation for Undirected Networks:**
+    *   `<k> = (Sum of degrees of all nodes) / N`
+    *   Alternatively, and often easier: `<k> = 2L / N`
+        *   Where `L` is the total number of unique links (edges) in the network.
+        *   Where `N` is the total number of nodes in the network.
+    *   *Reason for 2L:* Each link contributes to the degree of two nodes.
+
+### 3. Paths and Distances
+
+*   **Path:** A sequence of nodes where each node is adjacent (connected by a link) to the next.
+    *   Example: In a path A-B-C, (A,B) and (B,C) are links.
+*   **Shortest Path (Geodesic Path):** The path with the minimum number of links (edges) between two nodes.
+*   **Distance (d_ij):** The length (number of links) of the shortest path between node `i` and node `j`.
+    *   If two nodes are not connected by any path, their distance is considered infinite.
+
+### 4. Network Diameter
+
+*   **Definition:** The **maximum shortest path distance** between *any pair* of nodes in the graph.
+*   **How to find it:**
+    1.  Calculate the shortest path distance between all possible pairs of nodes in the network.
+    2.  The diameter is the largest value among these shortest path distances.
+
+*   **Average Path Length (<d>):** The average of the shortest path lengths over all possible pairs of nodes in a connected graph.
+    *   For an undirected graph: `<d> = (1 / (N*(N-1)/2)) * sum(d_ij)` for all i < j (sum over unique pairs).
+
+### 5. Clustering Coefficient (C)
+*   **Measures:** The degree to which nodes in a graph tend to cluster together. "Are my friends also friends with each other?"
+*   **Local Clustering Coefficient (C_i) for node i:**
+    *   `C_i = (2 * L_i) / (k_i * (k_i - 1))`
+    *   `L_i`: Number of links between the `k_i` neighbors of node `i`.
+    *   `k_i * (k_i - 1) / 2`: Maximum possible links between `k_i` neighbors.
+    *   `C_i = 0` if `k_i < 2` (node has fewer than 2 neighbors).
+*   **Average Clustering Coefficient (<C>):** The average of `C_i` over all nodes N. High `<C>` indicates a "cliquish" network.
+
+## Network Sparsity & Types
+
+*   **Maximum Links (L_max):** In an undirected network of N nodes, `L_max = N * (N - 1) / 2`.
+*   **Complete Graph:** A graph where `L = L_max` (all possible pairs of nodes are connected). Its average degree is `<k> = N - 1`.
+*   **Sparse Networks:** Most real-world networks are sparse, meaning `L << L_max` or `<k> << N - 1`.
+
+*   **Bipartite Networks (Bigraphs):**
+    *   **Definition:** A graph whose nodes can be divided into two disjoint sets, U and V, such that every link connects a node in U to one in V. There are no links *within* U or *within* V.
+    *   **Examples:** User-Item rating networks, Actor-Movie networks, Ingredient-Flavor networks.
+
+## Overview of Network Models (Contextual Understanding)
+
+*   **Random Network Model (Erdos-Renyi - ER Model):**
+    *   Nodes are connected randomly. Each pair of nodes has a probability `p` of being connected.
+    *   **Degree Distribution:** Binomial, approximates Poisson for large N and small `p`. Most nodes have degrees close to the average `<k>`.
+    *   **Average Path Length:** Grows logarithmically with N (`d_max ~ ln(N) / ln(<k>)`), indicating the "small-world" property.
+    *   **Clustering Coefficient:** `C ≈ <k> / N = p`. For sparse networks (common in reality), C is small in ER models.
+    *   **Limitation:** Does not accurately represent many real-world networks, particularly the presence of hubs and typically higher clustering found in real networks.
+
+*   **Small-World Networks (Watts-Strogatz Model):**
+    *   **Characteristics:**
+        *   **High Clustering Coefficient (C):** Nodes tend to cluster together (friends of friends are also friends), similar to regular lattices.
+        *   **Small Average Path Length (<d>):** Similar to random networks ("six degrees of separation" phenomenon).
+    *   **Model:** Starts with a regular lattice (high C, large d) and "rewires" edges with some probability `p`. Intermediate `p` values yield small-world properties.
+    *   Many social, biological, and technological networks exhibit these properties.
+
+*   **Scale-Free Networks (Barabasi-Albert - BA Model):**
+    *   **Degree Distribution:** Follows a power law: `P(k) ~ k^(-γ)` (where γ is the degree exponent, typically 2 < γ < 3 for real networks). This is linear on a log-log plot.
+        *   Implies a few nodes (hubs) have a very high number of links, while most nodes have few links (Pareto principle / 80-20 rule often applies).
+    *   **Mechanisms (BA Model):**
+        1.  **Growth:** Networks expand by the continuous addition of new nodes (unlike static ER model).
+        2.  **Preferential Attachment:** New nodes prefer to link to existing nodes that are already well-connected (higher degree) - "rich get richer". Probability `Π(k_i) = k_i / Σ_j k_j`.
+            *   *Origins of Preferential Attachment:* Can arise from mechanisms like "link selection model" (new node connects to one end of a randomly chosen existing link) or "copying model" (new node copies links from an existing node).
+    *   **Properties:**
+        *   **Hubs:** Dominate network topology and behavior.
+        *   **Robustness to Random Failures:** Removing random nodes has little impact on network connectivity.
+        *   **Vulnerability to Targeted Attacks:** Removing hubs can quickly fragment the network.
+        *   **Ultra-Small Average Path Length:** Often even smaller than random networks of similar size due to hubs acting as shortcuts.
+        *   Clustering can vary.
+    *   **Examples:** WWW, citation networks, social networks.
+
+## Example Calculation (Similar to Exam Guideline)
+
+**Consider a small undirected network graph with 5 nodes and the following connections (edges):**
+*   Edges (L=7): (1,2), (2,3), (3,4), (4,5), (5,1), (1,3), (2,4)
+*   Nodes (N=5): {1, 2, 3, 4, 5}
+
+**A. Calculate Node Degrees:**
+*   Degree of Node 1 (k_1): Links to 2, 5, 3. So, k_1 = 3.
+*   Degree of Node 2 (k_2): Links to 1, 3, 4. So, k_2 = 3.
+*   Degree of Node 3 (k_3): Links to 2, 4, 1. So, k_3 = 3.
+*   Degree of Node 4 (k_4): Links to 3, 5, 2. So, k_4 = 3.
+*   Degree of Node 5 (k_5): Links to 4, 1. So, k_5 = 2.
+
+**B. Calculate Average Degree (<k>):**
+*   Using sum of degrees: `(k_1+k_2+k_3+k_4+k_5) / N = (3+3+3+3+2) / 5 = 14 / 5 = 2.8`
+*   Using formula `2L / N`: `(2 * 7) / 5 = 14 / 5 = 2.8`
+*   **Average Degree (<k>) = 2.8**
+
+**C. Calculate Shortest Path Distances (d_ij) for all pairs:**
+    *   d(1,2) = 1 (direct link)
+    *   d(1,3) = 1 (direct link)
+    *   d(1,4): Path 1-3-4 (length 2) or 1-2-4 (length 2). Shortest = 2.
+    *   d(1,5) = 1 (direct link)
+    *   d(2,3) = 1 (direct link)
+    *   d(2,4) = 1 (direct link)
+    *   d(2,5): Path 2-1-5 (length 2) or 2-4-5 (length 2). Shortest = 2.
+    *   d(3,4) = 1 (direct link)
+    *   d(3,5): Path 3-1-5 (length 2) or 3-4-5 (length 2). Shortest = 2.
+    *   d(4,5) = 1 (direct link)
+
+    *(Note: d_ij = d_ji for undirected graphs, so we only need to calculate unique pairs)*
+
+**D. Determine Network Diameter:**
+*   The shortest path distances are: {1, 1, 2, 1, 1, 1, 2, 1, 2, 1}.
+*   The maximum value among these shortest path distances is 2.
+*   **Network Diameter = 2**
+
+*(Remember to list all nodes and edges clearly if asked to draw or interpret a graph in an exam setting.)*
+
+
+
+
+# Week 6: Cloud Resource Virtualization - Exam Cheatsheet v2
+
+## Motivation and Core Concepts
+
+*   **Virtualization Definition:** The act of creating a virtual (rather than actual) version of something, including virtual computer hardware platforms, operating systems (OS), memory, storage devices, or computer network resources. It abstracts underlying physical resources and enables replication, increasing system elasticity.
+*   **Motivations:**
+    *   **Managing Large-Scale Systems:** Addresses challenges like provisioning for peak demands, heterogeneity, and machine failures.
+    *   **Cloud Computing Enablement:** Simplifies management of physical resources, facilitates load balancing (VM migration), and offers user environment flexibility.
+    *   **Performance Isolation:** Dynamically assign and account for resources across applications.
+    *   **System Security:** Isolate services running on the same hardware.
+    *   **Performance and Reliability:** Allows application migration between platforms.
+    *   **Simplified Service Development & Management** for providers.
+*   **How Virtualization Simulates Interfaces:**
+    *   **Multiplexing (Many-to-One):** Creates multiple virtual objects from one physical object (e.g., CPU time shared among processes).
+    *   **Aggregation (One-to-Many):** Creates one virtual object from multiple physical objects (e.g., RAID disk).
+    *   **Emulation:** Constructs a virtual object of one type from a different type of physical object (e.g., disk emulating RAM via swap space).
+*   **Virtual Machine (VM):** An emulation of a particular computer system, operating based on the architecture and functions of a real or hypothetical computer. Each VM has its own virtual hardware (CPU, memory, disk, network interfaces) and runs a **Guest OS**.
+*   **Virtual Machine Monitor (VMM) / Hypervisor:** Software, firmware, or hardware that creates and runs VMs. It manages the host hardware and allocates resources.
+    *   **Type 1 (Native/Bare-metal):** Runs directly on the host's hardware (e.g., VMware ESXi, Microsoft Hyper-V, Xen, KVM). Offers better performance and security.
+    *   **Type 2 (Hosted):** Runs as an application on a conventional **Host OS** (e.g., VMware Workstation, Oracle VirtualBox). Easier for desktop use.
+*   **Popek and Goldberg Virtualization Requirements (for a VMM):**
+    1.  **Equivalence/Fidelity:** VM behavior is identical to direct hardware execution (except for timing/resource availability).
+    2.  **Resource Control/Safety:** VMM has complete control of system resources.
+    3.  **Efficiency/Performance:** A statistically dominant subset of virtual processor instructions execute directly on the real processor.
+        *   **Sensitive Instructions:** Interact with system state (e.g., change privilege mode, access MMU). Must be trapped by VMM.
+        *   **Privileged Instructions:** Execute only in kernel mode. Subset of sensitive instructions.
+        *   *Theorem:* A VMM can be constructed if sensitive instructions are a subset of privileged instructions. (x86 initially violated this).
+
+## System Architecture Layers & OS Concepts
+
+*   **Layering in Computer Systems:** Hardware -> Operating System -> Libraries -> Applications. Manages complexity through abstraction.
+*   **Key System Interfaces:**
+    *   **ISA (Instruction Set Architecture):** Boundary between hardware and software; defines instructions hardware executes.
+    *   **ABI (Application Binary Interface):** OS-dependent; allows applications + libraries to access hardware (uses system calls for privileged operations).
+    *   **API (Application Program Interface):** Language-dependent; access to ISA, includes library calls.
+*   **Dual Mode Execution:** Allows OS to protect itself and system components.
+    *   **User Mode:** For user applications.
+    *   **Kernel Mode (Supervisor/Privileged Mode):** For OS kernel.
+    *   **Mode Bit:** Hardware feature. Privileged instructions only run in kernel mode.
+    *   **System Call:** How user programs request OS services, causing a mode switch to kernel mode.
+*   **Process:** A program in execution, managed by the OS.
+
+## Virtual Memory (Focus for Exam Calculations)
+
+*   **Concept:** Allows processes to execute without being entirely in physical memory. Each process gets its own large, uniform virtual address space, which is mapped to physical memory (and disk) by the OS and hardware.
+*   **Paging:**
+    *   Physical memory is divided into fixed-sized blocks called **frames**.
+    *   Logical (virtual) memory is divided into blocks of the same size called **pages**.
+*   **Page Table:** A data structure maintained by the OS for each process, mapping virtual pages to physical frames.
+*   **MMU (Memory Management Unit):** Hardware that translates virtual addresses to physical addresses during execution.
+*   **Page Fault:** An interrupt that occurs when a program tries to access a page that is mapped in its virtual address space but is not currently loaded into a physical memory frame.
+    *   **Handling a Page Fault:**
+        1.  OS traps the fault.
+        2.  Checks if the memory access is valid.
+        3.  Finds a free frame in physical memory.
+        4.  If no free frame, a **page replacement algorithm** selects a victim frame.
+        5.  The required page is read from disk (swapped in) into the chosen frame.
+        6.  The page table is updated.
+        7.  The instruction that caused the fault is restarted.
+
+## Page Replacement Algorithms
+
+*   **Purpose:** When a page fault occurs and there are no free frames, an algorithm decides which page currently in memory should be swapped out to disk to make room for the new page.
+*   **Goal:** Minimize the page fault rate.
+
+### First-In-First-Out (FIFO) Algorithm (Key for Exam Calculation)
+
+*   **How it works:**
+    *   The page that has been in memory the longest is chosen as the victim to be replaced.
+    *   It's implemented by keeping track of all pages currently in memory in a queue; the oldest page is at the head of the queue.
+    *   When a page needs to be replaced, the page at the head of the queue is selected. The new page is then added to the tail of the queue.
+*   **Characteristics:**
+    *   Simple to understand and implement.
+    *   Not always optimal in performance.
+    *   Can suffer from **Belady's Anomaly:** For certain page reference strings, increasing the number of available frames can *increase* the number of page faults.
+
+### Example: Calculating Page Faults with FIFO
+
+**Scenario:** A virtual memory system has **3 initially empty frames**.
+**Page Access String:** `7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1`
+
+**Trace:**
+| Access | Page | Frame 1 | Frame 2 | Frame 3 | Fault? | Victim | Notes (Oldest page is leftmost in frames) |
+|--------|------|---------|---------|---------|--------|--------|-----------------------------------------|
+| 1      | 7    | 7       |         |         | Yes (F1) | -      | 7 loaded                                |
+| 2      | 0    | 7       | 0       |         | Yes (F2) | -      | 0 loaded                                |
+| 3      | 1    | 7       | 0       | 1       | Yes (F3) | -      | 1 loaded, Frames: [7,0,1]               |
+| 4      | 2    | 2       | 0       | 1       | Yes (F4) | 7      | 7 replaced, Frames: [0,1,2]               |
+| 5      | 0    | 2       | 0       | 1       | No     | -      | 0 already in memory                     |
+| 6      | 3    | 3       | 1       | 2       | Yes (F5) | 0      | 0 replaced, Frames: [1,2,3]               |
+| 7      | 0    | 0       | 2       | 3       | Yes (F6) | 1      | 1 replaced, Frames: [2,3,0]               |
+| 8      | 4    | 4       | 3       | 0       | Yes (F7) | 2      | 2 replaced, Frames: [3,0,4]               |
+| 9      | 2    | 2       | 0       | 4       | Yes (F8) | 3      | 3 replaced, Frames: [0,4,2]               |
+| 10     | 3    | 3       | 4       | 2       | Yes (F9) | 0      | 0 replaced, Frames: [4,2,3]               |
+| 11     | 0    | 0       | 2       | 3       | Yes (F10)| 4      | 4 replaced, Frames: [2,3,0]               |
+| 12     | 3    | 0       | 2       | 3       | No     | -      | 3 already in memory                     |
+| 13     | 0    | 0       | 2       | 3       | No     | -      | 0 already in memory                     |
+| 14     | 3    | 0       | 2       | 3       | No     | -      | 3 already in memory                     |
+| 15     | 2    | 0       | 2       | 3       | No     | -      | 2 already in memory                     |
+| 16     | 1    | 1       | 3       | 0       | Yes (F11)| 2      | 2 replaced, Frames: [3,0,1]               |
+| 17     | 2    | 2       | 0       | 1       | Yes (F12)| 3      | 3 replaced, Frames: [0,1,2]               |
+| 18     | 0    | 2       | 0       | 1       | No     | -      | 0 already in memory                     |
+| 19     | 1    | 2       | 0       | 1       | No     | -      | 1 already in memory                     |
+| 20     | 7    | 7       | 1       | 2       | Yes (F13)| 0      | 0 replaced, Frames: [1,2,7]               |
+| 21     | 0    | 0       | 2       | 7       | Yes (F14)| 1      | 1 replaced, Frames: [2,7,0]               |
+| 22     | 1    | 1       | 7       | 0       | Yes (F15)| 2      | 2 replaced, Frames: [7,0,1]               |
+
+**Total Page Faults = 15**
+
+*(While FIFO is in the exam sample, understanding OPT and LRU provides a good comparison.)*
+
+### Optimal (OPT or MIN) Algorithm
+
+*   **How it works:** Replaces the page that will not be used for the longest period of time in the future.
+*   **Characteristics:**
+    *   Guarantees the lowest possible page fault rate for a fixed number of frames.
+    *   Impossible to implement in practice because it requires future knowledge of the page access string.
+    *   Used as a benchmark to evaluate other algorithms.
+*   **Example: Calculating Page Faults with OPT (3 Frames)**
+    **Page Access String:** `7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1`
+    | Access | Page | Frame 1 | Frame 2 | Frame 3 | Fault? | Victim | Future Uses of [F1,F2,F3]              |
+    |--------|------|---------|---------|---------|--------|--------|-----------------------------------------|
+    | 1      | 7    | 7       |         |         | Yes (F1) | -      |                                         |
+    | 2      | 0    | 7       | 0       |         | Yes (F2) | -      |                                         |
+    | 3      | 1    | 7       | 0       | 1       | Yes (F3) | -      | Frames: [7,0,1]                         |
+    | 4      | 2    | 2       | 0       | 1       | Yes (F4) | 7      | 7 (far), 0 (next), 1 (later). Replace 7. Frames: [0,1,2] |
+    | 5      | 0    | 2       | 0       | 1       | No     | -      |                                         |
+    | 6      | 3    | 3       | 0       | 1       | Yes (F5) | 2      | 2 (later), 0 (next), 1 (much later). Replace 1 (or 2 if 1 not used). Let's say 1. Frames: [0,2,3] (order in frame doesn't matter for OPT logic, just content) |
+    | 7      | 0    | 3       | 0       | 1       | No     | -      | (Assuming 1 was replaced, frames [0,2,3]) |
+    | 8      | 4    | 4       | 0       | 3       | Yes (F6) | 2      | 2 (next), 0 (later), 3 (later). Replace page not used soonest or furthest. Page 2 is used next. Page 0 and 3 are used later. Let's check: 0 is at 11, 3 is at 10. Page 2 is at 9. Page 1 is not present.  If frames are [0,2,3]. Future: 0 (11), 2(9), 3(10). Replace 0. Frames [4,2,3] |
+    | ... (trace continues) ... This example needs careful step-by-step future lookups.
+    *A full trace for OPT is complex as it requires looking ahead at each step.*
+    **Typically, OPT results in fewer page faults than FIFO or LRU.** For the given string and 3 frames, OPT results in **9 page faults**. (This would be derived by carefully checking future uses at each fault).
+
+### Least Recently Used (LRU) Algorithm
+
+*   **How it works:** Replaces the page that has not been used for the longest period of time in the past.
+*   **Characteristics:**
+    *   Generally good performance, often close to OPT.
+    *   Implementation can be challenging: requires keeping track of when pages were last used (e.g., with timestamps or a stack).
+    *   Does not suffer from Belady's Anomaly.
+*   **Example: Calculating Page Faults with LRU (3 Frames)**
+    **Page Access String:** `7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1`
+    | Access | Page | Frame 1 | Frame 2 | Frame 3 | Fault? | Victim | Notes (Most recently used is rightmost) |
+    |--------|------|---------|---------|---------|--------|--------|-----------------------------------------|
+    | 1      | 7    | 7       |         |         | Yes (F1) | -      | [7]                                     |
+    | 2      | 0    | 7       | 0       |         | Yes (F2) | -      | [7,0]                                   |
+    | 3      | 1    | 7       | 0       | 1       | Yes (F3) | -      | [7,0,1]                                 |
+    | 4      | 2    | 2       | 0       | 1       | Yes (F4) | 7      | 7 is LRU. [0,1,2]                       |
+    | 5      | 0    | 2       | 1       | 0       | No     | -      | 0 used. [1,2,0]                         |
+    | 6      | 3    | 3       | 2       | 0       | Yes (F5) | 1      | 1 is LRU. [2,0,3]                       |
+    | 7      | 0    | 3       | 2       | 0       | No     | -      | 0 used. [2,3,0]                         |
+    | 8      | 4    | 4       | 3       | 0       | Yes (F6) | 2      | 2 is LRU. [3,0,4]                       |
+    | 9      | 2    | 2       | 3       | 4       | Yes (F7) | 0      | 0 is LRU. [3,4,2]                       |
+    | 10     | 3    | 2       | 4       | 3       | No     | -      | 3 used. [4,2,3]                         |
+    | 11     | 0    | 0       | 4       | 3       | Yes (F8) | 2      | 2 is LRU. [4,3,0]                       |
+    | 12     | 3    | 0       | 4       | 3       | No     | -      | 3 used. [4,0,3]                         |
+    | 13     | 0    | 3       | 4       | 0       | No     | -      | 0 used. [4,3,0]                         |
+    | 14     | 3    | 0       | 4       | 3       | No     | -      | 3 used. [4,0,3]                         |
+    | 15     | 2    | 2       | 0       | 3       | Yes (F9) | 4      | 4 is LRU. [0,3,2]                       |
+    | 16     | 1    | 1       | 3       | 2       | Yes (F10)| 0      | 0 is LRU. [3,2,1]                       |
+    | 17     | 2    | 1       | 3       | 2       | No     | -      | 2 used. [3,1,2]                         |
+    | 18     | 0    | 0       | 1       | 2       | Yes (F11)| 3      | 3 is LRU. [1,2,0]                       |
+    | 19     | 1    | 0       | 2       | 1       | No     | -      | 1 used. [2,0,1]                         |
+    | 20     | 7    | 7       | 0       | 1       | Yes (F12)| 2      | 2 is LRU. [0,1,7]                       |
+    | 21     | 0    | 7       | 1       | 0       | No     | -      | 0 used. [1,7,0]                         |
+    | 22     | 1    | 0       | 7       | 1       | No     | -      | 1 used. [7,0,1]                         |
+    **Total Page Faults (LRU) = 12**
+
+## Types of Virtualization & CPU Support (Expanded)
+
+*   **Full Virtualization:**
+    *   **Concept:** Allows an unmodified guest OS to run in a VM. The VMM simulates the underlying hardware completely, making the guest OS believe it's running on real hardware.
+    *   **Techniques:**
+        *   **Binary Translation (older x86):** VMM dynamically translates sensitive non-privileged instructions in guest OS kernel code into safe emulations. User-level code runs directly.
+    *   **Pros:** No guest OS modification needed; broad OS compatibility.
+    *   **Cons:** Can have performance overhead, especially with pure binary translation.
+*   **Paravirtualization (PV):**
+    *   **Concept:** The guest OS kernel is modified to be aware that it's running in a virtualized environment. It makes direct calls (**hypercalls**) to the VMM for operations that would normally require privileged hardware access or involve non-virtualizable instructions.
+    *   **Pros:** Historically offered better performance than full virtualization on hardware *without* virtualization assistance, as it avoided complex binary translation.
+    *   **Cons:** Requires modification of the guest OS, so only supported OSs can be used. Less portable as the guest is tied to the hypervisor's API.
+*   **Hardware-Assisted Virtualization (HVM):**
+    *   **Concept:** Leverages CPU features (e.g., Intel VT-x, AMD-V) designed specifically to support virtualization. These features allow the VMM to efficiently trap and handle privileged/sensitive instructions from an *unmodified* guest OS without binary translation for core CPU/memory virtualization.
+    *   **Intel VT-x (Vanderpool Technology):**
+        *   Introduced new CPU operational modes: **VMX root mode** (for VMM, higher privilege than Ring 0) and **VMX non-root mode** (for VM execution).
+        *   **VMCS (Virtual Machine Control Structure):** A data structure managing guest/host state and controlling VM transitions (VM entry, VM exit).
+        *   VM exits occur on privileged instructions or external events, transferring control to the VMM.
+    *   **Pros:** Good performance for unmodified guest OSs. Simplifies VMM design.
+    *   **Note (Hybrid Approach):** Modern VMMs often use HVM for CPU and memory virtualization but may still use paravirtualized drivers (PV drivers) within the guest OS for I/O devices (like network cards and disk controllers) for optimal performance.
+
+## Xen Hypervisor (Example Type 1 VMM)
+
+*   **Architecture:** Type 1 (bare-metal) hypervisor.
+*   **Key Concepts:**
+    *   **Domain:** An executing VM.
+    *   **Dom0 (Domain 0):** A privileged domain that runs first. Manages Xen control functions, hardware device drivers, and tools to manage other domains. Typically a modified Linux kernel.
+    *   **DomU (User Domain / Unprivileged Domain):** Guest VMs running user applications.
+    *   **Hypercalls:** Interface for guest OSs (especially paravirtualized ones) to request services from Xen.
+    *   Often uses HVM for CPU/memory and PV drivers for I/O.
+
+## Security Implications of Virtualization
+
+*   **Virtual Machine Based Rootkits (VMBR):**
+    *   A concern where malware acts as a rogue VMM (or compromises a legitimate VMM) and is inserted between the physical hardware and an OS.
+    *   This malicious layer can run surreptitiously, invisible to the guest OS.
+    *   Can observe data, events, state; run malicious services; interfere with applications.
+    *   Highlights the critical importance of securing the hypervisor layer itself.
+ 
+
+
+# Week 7 (Part 1): BPMN - Exam Cheatsheet v2
+
+## BPMN (Business Process Modeling Notation) Fundamentals
+
+*   **Purpose:** A standard graphical notation for modeling business processes. Aims to be understandable by business users yet provide enough detail for technical implementation.
+*   **Key Element Categories:**
+    1.  **Flow Objects:** Events, Activities, Gateways.
+    2.  **Connecting Objects:** Sequence Flows, Message Flows, Associations.
+    3.  **Swimlanes:** Pools and Lanes.
+    4.  **Artifacts:** Data Objects, Groups, Annotations.
+
+## Core BPMN Flow Objects for Exam
+
+### 1. Events (Circles)
+*   Represent something that "happens" during a process.
+*   **Start Event (Thin single circle):** Indicates where a process/sub-process begins.
+    *   *Common Triggers:*
+        *   **None:** Manual start (no specific trigger).
+        *   **Message:** (Envelope icon) Process instance starts upon the arrival of a message.
+        *   **Timer:** (Clock icon) Process instance starts at a specific date/time or after a recurring interval.
+        *   **Conditional:** (Lined page icon) Starts when a condition becomes true.
+        *   **Signal:** (Triangle icon) Starts when a signal is broadcast.
+        *   **Multiple:** (Pentagon icon) Can be triggered by one of several defined events.
+        *   **Parallel Multiple:** (Plus icon within pentagon) All of several defined events must occur.
+*   **Intermediate Event (Double circle):** Occurs *during* a process. Can be placed in the normal flow or attached to an activity boundary (for exceptions, compensation).
+    *   **Catching (empty or with internal icon):** Waits for a trigger before the flow can continue.
+        *   *Message Catch:* Waits for an incoming message.
+        *   *Timer Catch:* Pauses flow until a specific time elapses or a date is reached.
+        *   *Error Catch (on boundary):* (Lightning bolt icon) Catches a named error thrown by the activity it's attached to, diverting flow to an exception handling path.
+        *   *Conditional Catch:* Waits for a condition to become true.
+        *   *Link Catch:* (Arrow pointing right) A target for a "throwing" Link event, used as an off-page connector.
+        *   *Signal Catch:* Waits for a broadcast signal.
+        *   *Compensation Catch (on boundary):* (Two left-pointing chevrons) Initiates compensation for a completed activity.
+        *   *Escalation Catch (on boundary):* (Upward arrow) Catches an escalation event.
+    *   **Throwing (filled internal icon):** Triggers an event.
+        *   *Message Throw:* Sends a message.
+        *   *Signal Throw:* Broadcasts a signal.
+        *   *Link Throw:* (Arrow pointing left) Source for a "catching" Link event.
+        *   *Compensation Throw:* Triggers compensation for a specific activity.
+        *   *Escalation Throw:* Throws an escalation event.
+*   **End Event (Thick single circle):** Indicates where a specific path in a process ends.
+    *   *Common Results/Types:*
+        *   **None:** Path simply ends.
+        *   **Message:** (Filled envelope icon) Sends a message upon completion of the path.
+        *   **Error:** (Filled lightning bolt icon) Ends the path and throws a named error, typically caught by an Error Intermediate Event on a higher-level sub-process.
+        *   **Terminate:** (Filled circle icon) Immediately ends the *entire process instance*, including all parallel paths. Use with caution.
+        *   **Signal:** Broadcasts a signal upon completion.
+        *   **Compensation:** Triggers compensation.
+        *   **Escalation:** Throws an escalation.
+        *   **Multiple:** Can trigger one of several defined end results.
+
+### 2. Activities (Rounded Rectangles)
+*   Represent work performed within a process.
+*   **Task:** An atomic activity; the lowest level of process detail in a diagram.
+    *   *Common Task Types (often indicated by an icon in the top-left corner):*
+        *   **User Task:** (Person icon) Performed by a human user, often with software assistance.
+        *   **Service Task:** (Gears icon) An automated task performed by a system/service (e.g., invoking a web service).
+        *   **Script Task:** (Scroll icon) Executed by a business process engine using a script (e.g., Groovy, JavaScript).
+        *   **Manual Task:** (Hand icon) Performed by a human without software assistance.
+        *   **Business Rule Task:** (Table icon) Executes a business rule (e.g., using a DMN engine).
+        *   **Send Task:** (Filled envelope icon) Sends a message. Similar to a Message Throwing Intermediate Event.
+        *   **Receive Task:** (Empty envelope icon) Waits for a message. Similar to a Message Catching Intermediate Event, but it's an activity.
+*   **Sub-Process (Rounded rectangle with '+' at bottom when collapsed, or showing internal details when expanded):** A compound activity that contains its own detailed process flow (activities, gateways, events).
+    *   **Embedded Sub-Process:** Defined within the parent process.
+    *   **Reusable Sub-Process (Call Activity - thick border):** References a globally defined, callable process. Promotes reuse.
+    *   **Event Sub-Process (Dotted border, starts with an event):** Triggered by an event occurring within its parent process scope (e.g., an error event, message event). Can be interrupting or non-interrupting.
+    *   **Transaction Sub-Process (Double border):** A specialized sub-process with built-in behavior for handling transactions (commit, rollback via cancel event).
+    *   **Ad-hoc Sub-Process (Tilde '~' marker):** A group of activities that can be performed in any order or multiple times, without a strictly defined sequence flow, until a condition is met.
+    *   *Common Activity Markers (can apply to Tasks and Sub-Processes):*
+        *   **Loop Marker:** (Circular arrow) Activity repeats sequentially until a condition is met (or for a fixed number of times).
+        *   **Multi-Instance Marker:** (Three vertical lines for parallel, three horizontal for sequential) Multiple instances of the activity are created.
+            *   *Parallel (|||):* All instances run concurrently.
+            *   *Sequential (≡):* Instances run one after another.
+        *   **Compensation Marker:** (Two left-pointing chevrons) Indicates the activity can be compensated (undone) by a compensation handler.
+
+### 3. Gateways (Diamonds)
+*   Control the divergence (splitting) and convergence (merging) of Sequence Flow. They do not perform work themselves.
+*   **Exclusive Gateway (XOR - 'X' or no marker):**
+    *   *Diverging:* Routes flow to *one* outgoing path based on conditions. Only one condition can be true.
+    *   *Converging:* Merges multiple incoming paths; proceeds when *one* incoming path completes.
+*   **Parallel Gateway (AND - '+'):**
+    *   *Diverging (Fork):* Splits flow into *multiple parallel paths*. All outgoing paths are activated simultaneously.
+    *   *Converging (Join):* Waits for *all* incoming parallel paths to complete before proceeding (synchronization).
+*   **Inclusive Gateway (OR - 'O'):**
+    *   *Diverging:* Activates *one or more* outgoing paths based on conditions. All true conditions result in an active path.
+    *   *Converging:* Waits for *all active incoming paths* to complete. More complex synchronization than XOR or AND joins.
+*   **Event-Based Gateway (Diamond with double circle & pentagon/star):**
+    *   Diverges flow based on which subsequent event occurs first (a "race condition" for events). The path following the first event triggered is taken; other potential event triggers are then ignored for that instance.
+    *   Must be followed by Intermediate Catching Events or Receive Tasks (not other gateways or activities directly).
+*   **Complex Gateway (Diamond with asterisk '*'):** Used for complex synchronization behavior that cannot be easily modeled by other gateways (e.g., M-out-of-N join). Rarely used in practice due to complexity.
+
+## Connecting Objects
+
+*   **Sequence Flow (Solid arrow with solid arrowhead):** Shows the order in which flow objects (events, activities, gateways) are performed *within a single Pool/Lane*.
+    *   *Conditional Flow:* (Small diamond on the tail of the arrow, or a condition expression on the flow) Originates from an Exclusive or Inclusive Gateway. Taken only if the condition evaluates to true.
+    *   *Default Flow:* (Slash mark across the tail of the arrow) Originates from an Exclusive or Inclusive Gateway. Taken if no other conditional flow's condition from that gateway evaluates to true.
+*   **Message Flow (Dashed arrow, open circle at the start, open arrowhead at the end):** Shows messages exchanged *between separate Pools* (participants) or between a flow object in one pool and another pool (or a message event within the same pool if representing internal communication).
+    *   Cannot connect objects within the same pool if they are not message events.
+    *   Can connect to the boundary of a Pool or to specific flow objects (Tasks, Events) within another Pool.
+*   **Association (Dotted line, can have an arrowhead for direction):** Links Artifacts (like Data Objects or Annotations) or Text Annotations to Flow Objects or other BPMN elements. Does not affect sequence flow.
+
+## Artifacts (Provide additional information)
+
+*   **Data Object (Page icon, often with a folded corner):** Represents data used or produced by activities (e.g., documents, forms, information).
+    *   Can show data inputs and outputs of activities using associations.
+    *   Can have a **state** indicated in square brackets (e.g., `Invoice [Draft]`, `Order [Approved]`).
+*   **Data Store (Cylinder icon):** Represents a place where data is persisted between process instances or activities (e.g., a database, a filing cabinet). Activities can read from or write to Data Stores via associations.
+*   **Group (Dashed rounded rectangle):** Visually groups elements on a diagram for documentation or analysis purposes. Does not affect execution semantics.
+*   **Text Annotation (Open rectangle, often connected by an association):** Provides additional textual information or comments about a diagram element.
+
+## Swimlanes: Pools and Lanes
+
+*   **Pool (Large rectangle, typically horizontal):** Represents a major participant in a process (e.g., a company, department, system, customer).
+    *   A process is typically contained within a single pool. If multiple pools are shown, it's a **Collaboration Diagram**.
+    *   Message flows are used to show communication *between* pools. Sequence flow cannot cross pool boundaries.
+*   **Lane (Subdivision within a Pool, can be horizontal or vertical):** Organizes and categorizes activities within a pool, often representing roles, internal departments, or specific systems within that participant.
+    *   Sequence flow *can* cross lane boundaries within the same pool.
+*   **Process Types based on Pools:**
+    *   **Private Process:** Contained within a single pool, represents the internal processes of one organization/participant.
+    *   **Public Process:** Represents the interactions (message exchanges) of a private process with other processes/participants. Shows only the sequence of messages visible externally, abstracting internal details.
+    *   **Collaborative Process (Global Process):** Shows interactions between two or more business entities (represented as separate pools). Composed of at least two pools and the message flows between them.
+
+## BPMN Modeling for Exam (Refer to Lab Week 8)
+
+The exam guideline states: "Please refer to the Lab - Process Modelling with Petri Nets and BPMN" for calculation/modeling questions. This implies you should be comfortable with:
+
+*   **Task 4: From Petri nets to BPMN:** Understanding how basic Petri net structures (sequence, AND-split/join, XOR-split/join) translate to BPMN gateways and flows.
+    *   *Petri Net Place (condition) often relates to the state between BPMN Activities.*
+    *   *Petri Net Transition (action) often relates to a BPMN Task or Event.*
+    *   *AND-split (transition with multiple output places) -> Parallel Gateway (diverging).*
+    *   *AND-join (transition with multiple input places) -> Parallel Gateway (converging).*
+    *   *XOR-split (place with multiple output transitions) -> Exclusive or Event-Based Gateway (diverging).*
+    *   *XOR-join (place with multiple input transitions) -> Exclusive Gateway (converging).*
+
+*   **Task 5: Pizza Restaurant Business Scenario:** Modeling a multi-participant process using Pools and Lanes, Message Flows, different Task types, and potentially Timer Events (for the "every 10 minutes" check).
+    *   **Participants:** Customer, Waiter, Chef (each likely a Pool or Lane).
+    *   **Key Interactions (Message Flows):** Customer places order (to Waiter), Waiter passes order (to Chef), Chef asks Waiter (to bring pizza), Waiter brings pizza (to Customer), Customer asks Waiter (if pizza not ready).
+    *   **Timer Event:** A Timer Intermediate Event attached to the "Customer waits" activity or in a loop could model the 10-minute check.
+
+**Key BPMN elements to focus on for modeling/interpretation:**
+*   Correct use of Start, End, and Intermediate Events (especially Message and Timer).
+*   Distinguishing between Tasks and Sub-processes.
+*   Correctly choosing and applying Gateways:
+    *   Exclusive (XOR) for decisions leading to one path.
+    *   Parallel (AND) for concurrent activities.
+    *   Inclusive (OR) for decisions leading to one or more paths.
+*   Using Pools for different participants and Lanes for roles/systems within a participant.
+*   Using Sequence Flows within a Pool/Lane and Message Flows between Pools.
+
+
+
+
+# Week 7 (Part 2): Petri Nets - Exam Cheatsheet v2
+
+## Petri Net Fundamentals
+
+*   **Purpose:** A graphical and mathematical modeling tool for describing and analyzing concurrent, asynchronous, distributed, parallel, non-deterministic, and/or stochastic systems.
+*   **Core Components:**
+    *   **Places (P - Circles):** Represent conditions or states. Can hold tokens.
+    *   **Transitions (T - Rectangles/Bars):** Represent events or actions that can occur, leading to state changes.
+    *   **Arcs (F - Arrows):** Connect places to transitions or transitions to places, defining the flow and dependencies.
+        *   `Arc (p, t)`: Place `p` is an input place to transition `t`.
+        *   `Arc (t, p)`: Place `p` is an output place of transition `t`.
+        *   **Formal Definition:** A Petri net N is a triple (P, T, F) where:
+            *   P is a finite set of places.
+            *   T is a finite set of transitions.
+            *   F ⊆ (P × T) ∪ (T × P) is the flow relation (set of arcs).
+        *   **Notation:**
+            *   **Preset of t (`•t`):** Set of input places of transition `t`.  `•t = {p ∈ P | (p, t) ∈ F}`.
+            *   **Postset of t (`t•`):** Set of output places of transition `t`. `t• = {p ∈ P | (t, p) ∈ F}`.
+            *   **Preset of p (`•p`):** Set of input transitions of place `p`.   `•p = {t ∈ T | (t, p) ∈ F}`.
+            *   **Postset of p (`p•`):** Set of output transitions of place `p`.  `p• = {t ∈ T | (p, t) ∈ F}`.
+    *   **Tokens (Black dots within Places):** Represent the state of the system by indicating which conditions (places) are currently true or how many resources of a certain type are available.
+    
+    ## Markings (State of a Petri Net)
+    
+    *   **Definition:** A marking `M` of a Petri net N = (P,T,F) is a function M: P → ℕ (natural numbers, including 0), where `M(p)` is the number of tokens in place `p`.
+*   **Initial Marking (M_0):** The state of the Petri net at the beginning of its execution.
+*   **Example Notation:** `M = {p1:2, p2:0, p3:1}` or `2p1 + 0p2 + 1p3` means 2 tokens in p1, 0 in p2, 1 in p3.
+
+## Execution Semantics: The Firing Rule
+
+1.  **Enabled Transition:**
+    *   A transition `t` is **enabled** in a marking `M` if for each input place `p ∈ •t`, `M(p) > 0` (or `M(p) >= W(p,t)` if arcs have weights `W`). For this course, assume weight 1 unless specified.
+
+2.  **Firing a Transition:**
+    *   An enabled transition *may* fire. (If multiple transitions are enabled, one is chosen non-deterministically, unless priorities or other rules apply).
+    *   When an enabled transition `t` fires, it changes the marking `M` to a new marking `M'` as follows:
+        *   For each input place `p ∈ •t`: `M'(p) = M(p) - 1` (or `M(p) - W(p,t)`)
+        *   For each output place `p ∈ t•`: `M'(p) = M(p) + 1` (or `M(p) + W(t,p)`)
+        *   For places not connected to `t`, or connected in more complex ways (e.g., inhibitor arcs, which are not covered here), the rule is `M'(p) = M(p)`.
+        *   More formally for simple nets:
+            *   `M'(p) = M(p)` if `p ∉ •t` and `p ∉ t•` (not an input or output place)
+            *   `M'(p) = M(p) - 1` if `p ∈ •t` and `p ∉ t•` (only an input place)
+            *   `M'(p) = M(p) + 1` if `p ∉ •t` and `p ∈ t•` (only an output place)
+            *   `M'(p) = M(p)` if `p ∈ •t` and `p ∈ t•` (an input and output place - a self-loop, token removed and added back)
+    *   This results in a new marking `M'`. We write `M --[t]--> M'`.
+    *   A **firing sequence** `σ = t_0 t_1 ... t_{n-1}` leads from `M_0` to `M_n` if `M_0 --[t_0]--> M_1 --[t_1]--> ... --[t_{n-1}]--> M_n`. This is denoted `M_0 --[σ]--> M_n`.
+    *   If the sequence `σ` doesn't matter, we write `M_0 →* M_n` (M_n is reachable from M_0).
+
+## Key Petri Net Properties (for Analysis)
+
+*   **Reachability & Coverability:**
+    *   **Reachable Marking:** A marking `M` is reachable from an initial marking `M_0` if `M_0 →* M`. The set of all reachable markings is denoted `R(M_0)`.
+        *   Deciding reachability is a DSPACE(exp)-hard problem (computationally very complex).
+    *   **Coverable Marking:** A marking `M` is coverable if a reachable marking `M'` exists such that `M'(p) ≥ M(p)` for all places `p`. (i.e., `M'` "covers" `M` by having at least as many tokens in every place).
+*   **Boundedness:**
+    *   A place `p` is **k-bounded** if the number of tokens in `p` never exceeds `k` in any reachable marking.
+    *   A Petri net is **k-bounded** if all its places are k-bounded.
+    *   **Safe (1-bounded):** A net is safe if the number of tokens in any place never exceeds 1. Places act like boolean conditions (true/false). This is common in workflow modeling.
+    *   **Unbounded:** If a place can hold an infinite number of tokens.
+*   **Liveness:**
+    *   A transition `t` is **live** if, no matter what marking has been reached, it is always possible to eventually fire `t` through some further firing sequence. (Roughly, no dead parts in the system).
+    *   A Petri net is **live** if all its transitions are live.
+*   **Deadlock-Free:**
+    *   A Petri net is deadlock-free if every reachable marking enables at least one transition.
+    *   This means the system can always make progress and won't get stuck in a state where no actions can occur.
+    *   (Note: In a workflow context, a final marking where the process has completed correctly might have no enabled transitions, but this is an intended termination, not a deadlock in the problematic sense.)
+*   **Strongly Connected:** A Petri net N is strongly connected if for every pair of nodes (places or transitions) `x` and `y`, there is a directed path from `x` to `y` and vice versa.
+
+## Mapping Workflow Concepts to Petri Nets (for Exam Modeling)
+
+*   **Tasks/Activities:** Modeled by **Transitions**.
+*   **Conditions/States between Tasks:** Modeled by **Places**.
+*   **Case/Process Instance:** Represented by **Tokens** flowing through the net.
+
+**Common Control Flow Patterns:**
+
+*   **Sequence:** `Place_A --> Transition_Task1 --> Place_B --> Transition_Task2 --> Place_C`
+    *   Token in Place_A enables Task1. Firing Task1 consumes token from A, produces token in B. Token in B enables Task2.
+
+*   **Parallel Split (AND-split):** One transition has multiple output places.
+    *   `Place_In --> Transition_Split --> Place_Out1`
+    *   `                  |---------> Place_Out2`
+    *   When Transition_Split fires, tokens are produced in *both* Place_Out1 and Place_Out2, initiating parallel flows.
+
+*   **Synchronization (AND-join):** One transition has multiple input places.
+    *   `Place_In1 --> Transition_Join`
+    *   `Place_In2 -->     |`
+    *   `            --> Place_Out`
+    *   Transition_Join is enabled only when *both* Place_In1 and Place_In2 have tokens. Firing consumes tokens from both, produces one in Place_Out.
+
+*   **Exclusive Choice (XOR-split):** A place has multiple output transitions.
+    *   `Place_Decision --> Transition_Path1 --> Place_Out1`
+    *   `    |------------> Transition_Path2 --> Place_Out2`
+    *   If Place_Decision has a token, *either* Transition_Path1 *or* Transition_Path2 can fire (if enabled by other conditions, or non-deterministically if both are enabled by this place alone). Only one path is taken.
+
+*   **Simple Merge (XOR-join):** Multiple transitions have a common output place.
+    *   `Place_In1 --> Transition_EndPath1 --> Place_Merge`
+    *   `Place_In2 --> Transition_EndPath2 -----^`
+    *   If Transition_EndPath1 fires, a token goes to Place_Merge. If Transition_EndPath2 fires, a token goes to Place_Merge.
+
+## Petri Net Modeling for Exam (Refer to Lab Week 8)
+
+The exam guideline states: "Please refer to the Lab - Process Modelling with Petri Nets and BPMN." This implies you should be comfortable with modeling scenarios like:
+
+*   **Task 1: Season transition system:** Modeling cyclic behavior and concurrent, synchronized cycles (hemispheres).
+    *   *Key: Representing each season as a place, and transitions between them. For hemispheres, duplicate the cycle and use transitions to enforce synchronization (e.g., North Spring implies South Autumn).*
+*   **Task 2: Deadlock on a single lane bridge:** Modeling resource contention and identifying deadlock markings.
+    *   *Key: Places for "car approaching from side A/B", "bridge free", "car on bridge from A/B". Transitions for "car enters bridge", "car exits bridge". A deadlock marking would be where, for example, two cars are on the bridge facing each other, or both are waiting and neither can proceed due to priority rules not being modeled or violated.*
+*   **Task 3: Synchronised traffic lights:** Modeling mutual exclusion (only one light green at a time) and alternating behavior.
+    *   *Key: Places for "Light A Green", "Light A Red", "Light B Green", "Light B Red". Transitions for changing states. A shared place might ensure only one can be green.*
+*   **Other conceptual examples from lectures illustrating Petri Net capabilities:** Candy vending machine, order fulfillment processes, elevator systems, producer-consumer problems, modeling critical sections in parallel processes. These demonstrate how places, transitions, and tokens can model various real-world scenarios involving states, events, and resource contention.
+
+**Focus on:**
+*   Correctly identifying states (places) and actions (transitions).
+*   Using tokens to represent the flow and current state.
+*   Understanding how the firing rule leads to different markings.
+*   Identifying basic properties like deadlock in a given marking or simple net.
+
+
+
+
+
